@@ -9,19 +9,19 @@
 <body>
     <div class="container">
         <div class="menu">
-            <a href="{{ route('inicio') }}">Inicio</a>
-            <a href="{{ route('agenda') }}">Agenda</a>
-            <a href="{{ route('profesion') }}">Profesion</a>
+            <a href="">Inicio</a>
+            <a  onclick="cargarComponente('/agenda')">Agenda</a>
+            <a onclick="cargarComponente('/profesion')">Profesión</a>
         </div>
         <div class="main">
             <div class="header">
                 <h1>Agenda</h1>
             </div>
-
-            <!-- Aqui es donde cargaremos los componentes -->
-            <div class="contenido"></div>
+            <!-- Aquí es donde cargaremos los componentes -->
+            <div class="contenido" id="contenido"></div>
         </div>
     </div>
 
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

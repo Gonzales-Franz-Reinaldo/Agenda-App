@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/agendas.css') }}">
-    <title>Agendas</title>
-</head>
-<body>
+
     <div class="container-agendas">
         <h1 class="title">Lista de Agendas</h1>
-        <table class="styled-table">
+        <table class="styled-table" border="1">
             <thead>
                 <tr>
                     <th>CI</th>
@@ -31,19 +23,15 @@
                         <td>{{ $agenda->email }}</td>
                         <td>{{ $agenda->profesion->nombre }}</td>
                         <td class="options">
-                            <a href="{{ route('agenda.edit', $agenda->id) }}" class="btn edit">Editar</a>
-                            <form action="{{ route('agenda.destroy', $agenda->id) }}" method="POST" class="inline-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn delete">Eliminar</button>
-                            </form>
-                            <a href="{{ route('agenda.show', $agenda->id) }}" class="btn show">Ver</a>
+                            <!-- opciones de acciones para la agenda eliminar y editar -->
+                            <button class="btn-edit" data-id="{{ $agenda->id }}">Editar</button>
+                            <button class="btn-delete" data-id="{{ $agenda->id }}">Eliminar</button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <a href="{{route('agenda.create')}}" class="btn create">Crear Agenda</a>
+        <!-- para agregar funcionalidad para agregar nueva agenda -->
+        <button class="btn-create">Crear Agenda</button>
     </div>
-</body>
-</html>
+

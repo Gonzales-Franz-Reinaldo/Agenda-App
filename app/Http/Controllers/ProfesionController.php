@@ -15,7 +15,9 @@ class ProfesionController extends Controller
         $profesiones = Profesion::all();
 
         //? PARA LISTAR     
-        return view('profesion.index', compact('profesiones'));
+        return view('profesion.index', [
+            'profesiones' => $profesiones
+        ]);
     }
 
     /**

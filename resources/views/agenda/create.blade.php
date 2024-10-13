@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/agendas.css') }}">
-    <title>Document</title>
-</head>
-<body>
+
     <div class="formulario-agenda">
         <h2>Crear Agenda</h2>
-        <form action="{{route('agenda.store')}}" method="post">
+        <form id="form-create-agenda">
             @csrf
             <div class="impust">
                 <label for="ci">CI:</label>
@@ -42,5 +34,3 @@
             <button type="submit">Guardar</button>
         </form>
     </div>
-</body>
-</html>

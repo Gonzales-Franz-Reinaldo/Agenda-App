@@ -28,11 +28,8 @@ class AgendaController extends Controller
     public function create()
     {
         //? PARA CREAR UN NUEVO REGISTRO
-        // $profesiones = Profesion::all();
-        // $profesiones = Profesion::pluck('nombre', 'id');
         $profesiones = Profesion::orderBy('nombre')->get();
 
-        // return view('agenda.create', compact('profesiones'));
         return view('agenda.create', [
             'profesiones' => $profesiones
         ]);
@@ -57,8 +54,10 @@ class AgendaController extends Controller
         // Crear un nuevo registro
         Agenda::create($request->all());
 
-        // Redireccionar a la vista principal
-        return redirect()->route('agenda.index')->with('success', 'Registro creado exitosamente.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Registro creado exitosamente.'
+        ]);
     }
 
     /**
@@ -89,10 +88,13 @@ class AgendaController extends Controller
      */
     public function update(Request $request, Agenda $agenda)
     {
-        $imput = $request->all();
-        $agenda->update($imput);
 
-        return redirect()->route('agenda.index')->with('success', 'Registro actualizado exitosamente.');
+        $agenda->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Registro actualizado exitosamente.'
+        ]);
     }
 
     /**
@@ -102,6 +104,9 @@ class AgendaController extends Controller
     {
         $agenda->delete();
 
-        return redirect()->route('agenda.index')->with('success', 'Registro eliminado exitosamente.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Registro eliminado exitosamente.'
+        ]);
     }
 }
